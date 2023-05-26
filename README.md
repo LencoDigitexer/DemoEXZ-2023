@@ -23,3 +23,10 @@
 
 Удаление
 ![image](https://github.com/LencoDigitexer/DemoEXZ-2023/assets/44779327/822239b2-c799-4ca1-a44d-497a898919b6)
+
+Поиск
+![image](https://github.com/LencoDigitexer/DemoEXZ-2023/assets/44779327/5c91a240-dff1-44e7-8ab5-58ee6ac0ce5b)
+![image](https://github.com/LencoDigitexer/DemoEXZ-2023/assets/44779327/3d6a6261-d414-49db-a4db-fb42c5e89447)
+
+Фильтрация
+![image](https://github.com/LencoDigitexer/DemoEXZ-2023/assets/44779327/6bfa3bcc-e602-4d2b-9290-134ab294e327)
