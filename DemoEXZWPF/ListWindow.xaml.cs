@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,8 @@ namespace DemoEXZWPF
         public ListWindow()
         {
             InitializeComponent();
-            
 
+            ComboUser.ItemsSource = DemoEXZEntities.Instance().User.ToList();
             //DGridTasks.ItemsSource = DemoEXZEntities.Instance().Task.ToList();
         }
 
@@ -69,6 +70,50 @@ namespace DemoEXZWPF
             {
                 DemoEXZEntities.Instance().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 DGridTasks.ItemsSource = DemoEXZEntities.Instance().Task.ToList();
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = SearchBox.Text.Trim();
+
+            ICollectionView tasksCollectionView = CollectionViewSource.GetDefaultView(DGridTasks.ItemsSource);
+            if (tasksCollectionView != null)
+            {
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    tasksCollectionView.Filter = null; // Очистка фильтра
+                }
+                else
+                {
+                    tasksCollectionView.Filter = (task) =>
+                    {
+                        Task currentTask = task as Task;
+                        return currentTask != null && currentTask.name.Contains(searchText);
+                    };
+                }
+            }
+        }
+
+        private void ComboUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedUserId = (int)ComboUser.SelectedValue;
+
+            ICollectionView tasksCollectionView = CollectionViewSource.GetDefaultView(DGridTasks.ItemsSource);
+            if (tasksCollectionView != null)
+            {
+                if (selectedUserId == 0)
+                {
+                    tasksCollectionView.Filter = null; // Очистка фильтра
+                }
+                else
+                {
+                    tasksCollectionView.Filter = (task) =>
+                    {
+                        Task currentTask = task as Task;
+                        return currentTask != null && currentTask.user_id == selectedUserId;
+                    };
+                }
             }
         }
     }

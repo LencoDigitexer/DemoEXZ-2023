@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="DGridTasks" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
@@ -25,7 +26,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Добавить" HorizontalAlignment="Left"  Grid.Row="1" Width="400" Name="BtnAdd" Click="BtnAdd_Click"/>
-        <Button Content="Удалить" HorizontalAlignment="Right"  Grid.Row="1" Width="400" Name="BtnDelete" Click="BtnDelete_Click"/>
+        
+        <Button Content="Добавить" HorizontalAlignment="Left"  Grid.Row="2" Width="400" Name="BtnAdd" Click="BtnAdd_Click"/>
+        <Button Content="Удалить" HorizontalAlignment="Right"  Grid.Row="2" Width="400" Name="BtnDelete" Click="BtnDelete_Click"/>
+        <TextBox x:Name="SearchBox" HorizontalAlignment="Left"  Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <ComboBox SelectedValue="{Binding user_id}" x:Name="ComboUser" SelectionChanged="ComboUser_SelectionChanged" DisplayMemberPath="name" SelectedValuePath="id" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
